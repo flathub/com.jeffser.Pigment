@@ -1,7 +1,7 @@
 {
   "id": "com.jeffser.Pigment",
   "runtime": "org.gnome.Platform",
-  "runtime-version": "49",
+  "runtime-version": "50",
   "sdk": "org.gnome.Sdk",
   "command": "pigment",
   "finish-args": [
@@ -80,7 +80,8 @@
         {
           "type": "git",
           "url": "https://github.com/Jeffser/Pigment.git",
-          "tag": "0.5.5"
+          "tag": "0.5.6",
+          "commit": "cb725a903cd22f60fe1f17ff03dafa48567cf76b"
         }
       ]
     }
