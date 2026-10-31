@@ -1,84 +1,29 @@
 {
-  "id": "com.jeffser.Pigment",
-  "runtime": "org.gnome.Platform",
-  "runtime-version": "50",
-  "sdk": "org.gnome.Sdk",
-  "command": "pigment",
-  "finish-args": [
-    "--share=ipc",
-    "--socket=fallback-x11",
-    "--device=dri",
-    "--socket=wayland"
-  ],
-  "cleanup": [
-    "/include",
-    "/lib/pkgconfig",
-    "/share/gir-1.0"
-  ],
-  "modules": [
-    {
-      "name": "python3-colorthief",
-      "buildsystem": "simple",
-      "build-commands": [
-        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"colorthief\" --no-build-isolation"
-      ],
-      "sources": [
+    "id": "com.jeffser.Pigment",
+    "runtime": "org.gnome.Platform",
+    "runtime-version": "51",
+    "sdk": "org.gnome.Sdk",
+    "command": "pigment",
+    "finish-args": [
+        "--share=ipc",
+        "--socket=fallback-x11",
+        "--device=dri",
+        "--socket=wayland"
+    ],
+    "modules": [
+        "python3-requirements.json",
         {
-          "type": "file",
-          "url": "https://files.pythonhosted.org/packages/56/18/be03b7058e65f9df479b14e7af4e73945ce311e07aaad45cf2536e14791a/colorthief-0.2.1-py2.py3-none-any.whl",
-          "sha256": "b04fc8ce5cf9c888768745e29cb19b7b688d5711af6fba26e8057debabec56b9"
-        },
-        {
-          "type": "file",
-          "url": "https://files.pythonhosted.org/packages/af/cb/bb5c01fcd2a69335b86c22142b2bccfc3464087efb7fd382eee5ffc7fdf7/pillow-11.2.1.tar.gz",
-          "sha256": "a64dd61998416367b7ef979b73d3a85853ba9bec4c2925f74e588879a58716b6"
+            "name": "pigment",
+            "builddir": true,
+            "buildsystem": "meson",
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/Jeffser/Pigment.git",
+                    "tag": "0.5.6",
+                    "commit": "cb725a903cd22f60fe1f17ff03dafa48567cf76b"
+                }
+            ]
         }
-      ]
-    },
-    {
-      "name": "python3-pydbus",
-      "buildsystem": "simple",
-      "build-commands": [
-        "pip3 install --verbose --exists-action=i --no-index --find-links=\"file://${PWD}\" --prefix=${FLATPAK_DEST} \"pydbus\" --no-build-isolation"
-      ],
-      "sources": [
-        {
-          "type": "file",
-          "url": "https://files.pythonhosted.org/packages/92/56/27148014c2f85ce70332f18612f921f682395c7d4e91ec103783be4fce00/pydbus-0.6.0-py2.py3-none-any.whl",
-          "sha256": "66b80106352a718d80d6c681dc2a82588048e30b75aab933e4020eb0660bf85e"
-        }
-      ]
-    },
-    {
-      "name": "libportal",
-      "buildsystem": "meson",
-      "builddir": true,
-      "config-opts": [
-        "-Ddocs=false",
-        "-Dtests=false",
-        "-Dvapi=false"
-      ],
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/flatpak/libportal.git",
-          "tag": "0.9.1",
-          "commit": "8f5dc8d192f6e31dafe69e35219e3b707bde71ce"
-        }
-      ]
-    },
-    {
-      "name": "pigment",
-      "builddir": true,
-      "buildsystem": "meson",
-      "sources": [
-        {
-          "type": "git",
-          "url": "https://github.com/Jeffser/Pigment.git",
-          "tag": "0.5.6",
-          "commit": "cb725a903cd22f60fe1f17ff03dafa48567cf76b"
-        }
-      ]
-    }
-  ]
+    ]
 }

@@ -1,0 +1,5 @@
+# Use the following command to regenarete the Python modules
+# flatpak-pip-generator -r requirements.txt --runtime=org.gnome.Sdk//51 --prefer-wheels=pillow
+
+colorthief
+pydbus
